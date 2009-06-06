@@ -1,8 +1,13 @@
 class AdsController < ApplicationController
-  def index
-    @ads = Ad.find(:all)
+  def new
+    @ad = Ad.new
   end
+
   def show
     @ad = Ad.find(params[:id])
+  end
+
+  def index
+    @ads = Ad.find(:all)
   end
 end
