@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  before_filter :check_logged_in, :only => [:edit, :update]
+  before_filter :check_logged_in, :only => [:edit, :update, :destroy]
 
   def new
     @ad = Ad.new
@@ -27,6 +27,12 @@ class AdsController < ApplicationController
 
   def index
     @ads = Ad.find(:all)
+  end
+
+  def destroy
+    @ad = Ad.find(params[:id])
+    @ad.destroy
+    redirect_to '/ads/'
   end
 
   private
