@@ -16,4 +16,14 @@ class AdsController < ApplicationController
   def index
     @ads = Ad.find(:all)
   end
+
+  def edit
+    @ad = Ad.find(params[:id])
+  end
+
+  def update
+    @ad = Ad.find(params[:id])
+    @ad.update_attributes(params[:ad])
+    redirect_to "/ads/#{@ad.id}"
+  end
 end
